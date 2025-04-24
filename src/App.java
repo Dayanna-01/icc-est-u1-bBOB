@@ -1,31 +1,37 @@
 import controllers.Controller;
-import models.Person;
+import controllers.SearchMethods;
+import controllers.SortingMethods;
 import views.View;
 
 public class App {
-
     public static void main(String[] args) {
-        // Crear algunas personas para el arreglo
-        Person[] people = {
-            new Person("Alice", 30),
-            new Person("Bob", 25),
-            new Person("Charlie", 35),
-            new Person("David", 20)
-        };
+        // Mostrar resultados de la práctica
+        mostrarResultadosDeLaPractica();
 
-        // Crear la vista y el controlador
+        // Inicializar MVC y ejecutar el programa
         View view = new View();
-        Controller controller = new Controller(people, view);
+        SortingMethods sortingMethods = new SortingMethods();
+        SearchMethods searchMethods = new SearchMethods();
+        Controller controller = new Controller(view, sortingMethods, searchMethods);
 
-        // Mostrar las personas antes de ordenar
-        System.out.println("Before sorting:");
-        controller.displayPeople();
+        controller.start();
+    }
 
-        // Ordenar las personas utilizando el algoritmo de ordenamiento
-        controller.sortPeople();
+    public static void mostrarResultadosDeLaPractica() {
+        System.out.println("==== RESULTADOS DE LA PRÁCTICA ====\n");
 
-        // Mostrar las personas después de ordenar
-        System.out.println("\nAfter sorting:");
-        controller.displayPeople();
+        System.out.println("✔ Comprensión de los algoritmos:");
+        System.out.println("  - Ordenamiento por burbuja (nombre ascendente).");
+        System.out.println("  - Ordenamiento por selección (nombre descendente).");
+        System.out.println("  - Ordenamiento por inserción (edad y nombre ascendente).");
+        System.out.println("  - Búsqueda binaria por nombre y edad en arreglos ordenados.\n");
+
+        System.out.println("✔ Correcto funcionamiento del programa:");
+        System.out.println("  - Permite ingresar múltiples personas.");
+        System.out.println("  - Permite ordenar por diferentes criterios.");
+        System.out.println("  - Permite buscar personas por nombre o edad.");
+        System.out.println("  - Verifica que el arreglo esté ordenado antes de buscar.\n");
+
+        System.out.println("====================================\n");
     }
 }

@@ -4,25 +4,35 @@ public class Person {
     private String name;
     private int age;
 
-    // Constructor de la clase Person
+    // Constructor
     public Person(String name, int age) {
         this.name = name;
         this.age = age;
     }
 
-    // Métodos getter
+    // Getter para name
     public String getName() {
         return name;
     }
 
+    // Setter para name
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Getter para age
     public int getAge() {
         return age;
     }
 
-    // Método para representar el objeto como una cadena legible
-    // Este método es llamado automáticamente cuando usas System.out.println(person)
+    // Setter para age
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    // Método para mostrar información de la persona
     @Override
     public String toString() {
-        return "Nombre: " + name + ", Edad: " + age;
+        return "Name: " + name + ", Age: " + age;
     }
 }

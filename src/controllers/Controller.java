@@ -3,24 +3,85 @@ package controllers;
 import models.Person;
 import views.View;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Controller {
+    private View view;
+    private SortingMethods sortingMethods;
+    private SearchMethods searchMethods;
+    private List<Person> persons;
 
-    private Person[] people; // Atributo para almacenar un arreglo de personas
-    private View view; // Atributo para la vista
-
-    // Constructor que inicializa las personas y la vista
-    public Controller(Person[] people, View view) {
-        this.people = people; // Inicializa el arreglo de personas
-        this.view = view; // Inicializa la vista
+    public Controller(View view, SortingMethods sortingMethods, SearchMethods searchMethods) {
+        this.view = view;
+        this.sortingMethods = sortingMethods;
+        this.searchMethods = searchMethods;
+        this.persons = new ArrayList<>();
     }
 
-    // Método para mostrar las personas usando la vista
-    public void displayPeople() {
-        view.displayPersons(people); // Llama al método de la vista para mostrar las personas
+    public void start() {
+        int option;
+        do {
+            option = view.showMenu();
+            switch (option) {
+                case 1 -> addPersons();
+                case 2 -> view.displayPersons(persons.toArray(new Person[0]));
+                case 3 -> sortPersons();
+                case 4 -> searchPerson();
+                case 0 -> System.out.println("¡Hasta luego!");
+                default -> System.out.println("Opción no válida.");
+            }
+        } while (option != 0);
     }
 
-    // Método para ordenar las personas utilizando un algoritmo de ordenamiento
-    public void sortPeople() {
-        SortingMethods.bubbleSort(people);  // Utiliza el algoritmo de Bubble Sort para ordenar el arreglo
+    public void inputPersons() {
+        int count;
+        System.out.print("¿Cuántas personas desea ingresar? ");
+        count = new java.util.Scanner(System.in).nextInt();
+        for (int i = 0; i < count; i++) {
+            persons.add(view.inputPerson());
+        }
+    }
+
+    public void addPersons() {
+        persons.add(view.inputPerson());
+    }
+
+    public void sortPersons() {
+        if (persons.isEmpty()) {
+            System.out.println("No hay personas para ordenar.");
+            return;
+        }
+
+        int method = view.selectSortingMethod();
+        Person[] array = persons.toArray(new Person[0]);
+        sortingMethods.sort(array, method);
+        persons = new ArrayList<>(List.of(array));
+        System.out.println("Personas ordenadas:");
+        view.displayPersons(array);
+    }
+
+    public void searchPerson() {
+        if (persons.isEmpty()) {
+            System.out.println("No hay personas para buscar.");
+            return;
+        }
+
+        int criterion = view.selectSearchCriterion();
+        Person[] array = persons.toArray(new Person[0]);
+
+        // Asegurarse que está ordenado según el criterio
+        sortingMethods.sort(array, criterion == 1 ? 1 : 0); // 1: nombre, 0: edad
+
+        Person result = null;
+        if (criterion == 1) {
+            String name = view.inputName();
+            result = searchMethods.binarySearchByName(array, name);
+        } else {
+            int age = view.inputAge();
+            result = searchMethods.binarySearchByAge(array, age);
+        }
+
+        view.displaySearchResult(result);
     }
 }
