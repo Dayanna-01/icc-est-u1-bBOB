@@ -28,7 +28,7 @@ public class Controller {
                 case 2 -> view.displayPersons(persons.toArray(new Person[0]));
                 case 3 -> sortPersons();
                 case 4 -> searchPerson();
-                case 0 -> System.out.println("¡Hasta luego!");
+                case 0 -> System.out.println("Adioooooooooooooooos");
                 default -> System.out.println("Opción no válida.");
             }
         } while (option != 0);

@@ -1,7 +1,7 @@
 package views;
 
-import models.Person;
 import java.util.Scanner;
+import models.Person;
 
 public class View {
     private Scanner scanner;
@@ -10,78 +10,86 @@ public class View {
         scanner = new Scanner(System.in);
     }
 
-    // Muestra el menú principal y retorna la opción seleccionada
     public int showMenu() {
-        System.out.println("=== Menú Principal ===");
-        System.out.println("1. Agregar persona");
-        System.out.println("2. Mostrar personas");
-        System.out.println("3. Ordenar personas");
-        System.out.println("4. Buscar persona");
+        System.out.println();
+        System.out.println("==== MENÚ ====");
+        System.out.println("1. Ingresar personas");
+        System.out.println("2. Ordenar personas");
+        System.out.println("3. Buscar persona");
+        System.out.println("4. Mostrar personas");
         System.out.println("0. Salir");
         System.out.print("Seleccione una opción: ");
-        return scanner.nextInt();
+        int option = scanner.nextInt();
+        scanner.nextLine(); // limpiar el salto de línea pendiente
+        return option;
     }
 
-    // Solicita nombre y edad, y retorna un nuevo objeto Person
     public Person inputPerson() {
-        scanner.nextLine(); // limpiar buffer
-        System.out.print("Ingrese el nombre: ");
+        System.out.print("Nombre: ");
         String name = scanner.nextLine();
-        System.out.print("Ingrese la edad: ");
+
+        System.out.print("Edad: ");
         int age = scanner.nextInt();
+        scanner.nextLine(); // limpiar el salto de línea pendiente
+
         return new Person(name, age);
     }
 
-    // Permite seleccionar el método de ordenamiento
     public int selectSortingMethod() {
-        System.out.println("=== Métodos de Ordenamiento ===");
-        System.out.println("1. Bubble Sort");
-        System.out.println("2. Selection Sort");
-        System.out.println("3. Insertion Sort");
-        System.out.println("4. Merge Sort");
-        System.out.println("5. Quick Sort");
-        System.out.println("6. Shell Sort");
-        System.out.print("Seleccione un método: ");
-        return scanner.nextInt();
-    }
-
-    // Permite seleccionar el criterio de búsqueda
-    public int selectSearchCriterion() {
-        System.out.println("=== Criterio de Búsqueda ===");
-        System.out.println("1. Buscar por nombre");
-        System.out.println("2. Buscar por edad");
-        System.out.print("Seleccione un criterio: ");
-        return scanner.nextInt();
-    }
-
-    // Muestra un arreglo de personas
-    public void displayPersons(Person[] people) {
-        System.out.println("=== Lista de Personas ===");
         System.out.println();
+        System.out.println("Seleccione método de ordenamiento:");
+        System.out.println("1. Burbuja por nombre (asc)");
+        System.out.println("2. Selección por nombre (desc)");
+        System.out.println("3. Inserción por edad (asc)");
+        System.out.println("4. Inserción por nombre (asc)");
+        System.out.print("Opción: ");
+        int option = scanner.nextInt();
+        scanner.nextLine(); // limpiar el salto de línea pendiente
+        return option;
+    }
+
+
+    public int selectSearchCriterion() {
+        System.out.println();
+        System.out.println("Seleccione criterio de búsqueda:");
+        System.out.println("1. Por edad");
+        System.out.println("2. Por nombre");
+        System.out.print("Opción: ");
+        int option = scanner.nextInt();
+        scanner.nextLine(); // limpiar el salto de línea pendiente
+        return option;
+    }
+
+    public void displayPersons(Person[] people) {
+        if (people.length == 0) {
+            System.out.println("No hay personas para mostrar.");
+            return;
+        }
+        System.out.println();
+        System.out.println("==== LISTA DE PERSONAS ====");
         for (Person person : people) {
             System.out.println(person);
         }
+        System.out.println("===========================\n");
     }
 
-    // Muestra el resultado de la búsqueda
     public void displaySearchResult(Person person) {
-        if (person != null) {
-            System.out.println("Persona encontrada: " + person);
-        } else {
+        if (person == null) {
             System.out.println("Persona no encontrada.");
+        } else {
+            System.out.println("Persona encontrada: " + person);
         }
     }
 
-    // Solicita una edad
     public int inputAge() {
-        System.out.print("Ingrese la edad: ");
-        return scanner.nextInt();
+        System.out.print("Ingrese edad a buscar: ");
+        int age = scanner.nextInt();
+        scanner.nextLine(); // limpiar el salto de línea pendiente
+        return age;
     }
 
-    // Solicita un nombre
     public String inputName() {
-        scanner.nextLine(); // limpiar buffer
-        System.out.print("Ingrese el nombre: ");
+        System.out.print("Ingrese nombre a buscar: ");
         return scanner.nextLine();
     }
 }
