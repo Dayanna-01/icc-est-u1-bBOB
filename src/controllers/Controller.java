@@ -70,8 +70,7 @@ public class Controller {
         int criterion = view.selectSearchCriterion();
         Person[] array = persons.toArray(new Person[0]);
 
-        // Asegurarse que está ordenado según el criterio
-        sortingMethods.sort(array, criterion == 1 ? 1 : 0); // 1: nombre, 0: edad
+        sortingMethods.sort(array, criterion == 1 ? 1 : 0); 
 
         Person result = null;
         if (criterion == 1) {

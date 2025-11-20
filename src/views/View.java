@@ -20,7 +20,7 @@ public class View {
         System.out.println("0. Salir");
         System.out.print("Seleccione una opción: ");
         int option = scanner.nextInt();
-        scanner.nextLine(); // limpiar el salto de línea pendiente
+        scanner.nextLine(); 
         return option;
     }
 
@@ -30,7 +30,7 @@ public class View {
 
         System.out.print("Edad: ");
         int age = scanner.nextInt();
-        scanner.nextLine(); // limpiar el salto de línea pendiente
+        scanner.nextLine(); 
 
         return new Person(name, age);
     }
@@ -44,7 +44,7 @@ public class View {
         System.out.println("4. Inserción por nombre (asc)");
         System.out.print("Opción: ");
         int option = scanner.nextInt();
-        scanner.nextLine(); // limpiar el salto de línea pendiente
+        scanner.nextLine(); 
         return option;
     }
 
@@ -56,7 +56,7 @@ public class View {
         System.out.println("2. Por nombre");
         System.out.print("Opción: ");
         int option = scanner.nextInt();
-        scanner.nextLine(); // limpiar el salto de línea pendiente
+        scanner.nextLine(); 
         return option;
     }
 
@@ -84,7 +84,7 @@ public class View {
     public int inputAge() {
         System.out.print("Ingrese edad a buscar: ");
         int age = scanner.nextInt();
-        scanner.nextLine(); // limpiar el salto de línea pendiente
+        scanner.nextLine(); 
         return age;
     }
 
