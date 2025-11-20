@@ -1,15 +1,14 @@
 # Informe de Práctica: Búsqueda y Ordenamiento en Java
 
----
+## 📌 Información General
 
-### I. Identificación del Proyecto
-
-| Campo | Valor |
-| :--- | :--- |
-| **Asignatura** | Estructura de Datos |
-| **Nro. Práctica** | 3 |
-| **Título** | Búsqueda Binaria / Ordenamiento y Búsqueda de Objetos |
-| **Objetivo Principal** | Implementar y reforzar los algoritmos de búsqueda y ordenamiento con objetos en Java, utilizando el patrón **MVC**. |
+- **Título:** Práctica de busqueda y ordenamiento
+- **Asignatura:** Estructura de Datos
+- **Carrera:** Computación
+- **Estudiante:** Janelly Dayanna Chacha Vélez
+- **Fecha:** 20/11/2025
+- **Profesor:** Ing. Pablo Torres
+- **Objetivo Principal** | Implementar y reforzar los algoritmos de búsqueda y ordenamiento con objetos en Java, utilizando el patrón **MVC**. |
 
 ---
 
